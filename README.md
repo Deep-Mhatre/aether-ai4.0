@@ -12,187 +12,104 @@ Type a prompt like:
 “Build a SaaS dashboard with auth, pricing, and analytics”
 
 And the system will:
+# AI Website Builder
 
-🧠 Generate full-stack React/Next.js code
-🗂️ Create structured project files automatically
-⚡ Run instantly in a live browser sandbox
-🔧 Fix runtime errors using AI
-🤖 Improve code using autonomous agents (Pro feature)
-🎯 Why this project is different
+Turn natural language prompts into production-ready full-stack applications using agentic AI.
 
-Most AI tools just generate code.
+This repository contains a Next.js app that demonstrates an agent-driven pipeline: generate, run, fix, and improve apps automatically with AI.
 
-This system:
+## Features
 
-Thinks in projects, not snippets
-Maintains persistent workspace memory
-Uses an AI agent loop (generate → run → fix → improve)
-Supports real-time execution inside the browser
-✨ Core Features
-🧠 AI Code Generation Engine
-Powered by Google Gemini (Flash model)
-Structured output: files, dependencies, and metadata
-Streaming responses with live progress updates
-npm validation to prevent hallucinated packages
-🤖 Agent Mode (Autonomous AI)
-Built using Cline SDK
-Can:
-Modify files one-by-one
-Refactor entire codebases
-Stream reasoning in real-time
-Uses tool-based execution:
-update_file
-done_improving
-💬 Persistent AI Workspace
-Chat history saved per project
-Context-aware conversations
-Resume any app generation anytime
-🖥️ Live Code Sandbox (Sandpack)
-Instant React app preview in browser
-File explorer + code editor
-Hot updates without full reload
-Tailwind styling support
-🧾 AI Debugging System
-Detects runtime + compile errors
-Auto “Fix with AI” button
-Sends error context back to Gemini
-Regenerates corrected code instantly
-📦 Credit System
-Plan	Credits
-Free	10
-Starter	50
-Pro	150
-1 credit = 1 generation or improvement
-Protected on both client + server
-Plan upgrades are additive (no loss of credits)
-🧱 Tech Stack
-Layer	Technology
-Frontend	Next.js 15 (App Router, TypeScript)
-Auth	Clerk
-Database	Supabase (PostgreSQL)
-ORM	Prisma
-AI Engine	Google Gemini (Flash)
-Agent System	Cline SDK
-Preview Engine	Sandpack
-UI	Tailwind CSS v4 + Shadcn UI
-Rate Limiting	Arcjet
-Storage	Supabase Storage
-🏗️ System Architecture
-🔷 High-Level Flow
-User Prompt
-   ↓
-Next.js Chat UI
-   ↓
-API Layer (/api/gen-ai-code)
-   ↓
-Gemini AI (Code Generation Engine)
-   ↓
-Structured Output (Files + Dependencies)
-   ↓
-Supabase Database (Workspace Storage)
-   ↓
-Sandpack Sandbox (Live Preview)
-   ↓
-User sees running application ⚡
-🤖 Agent Improvement Flow
-User clicks “Improve with AI”
-   ↓
-Cline Agent starts execution
-   ↓
-Reads full project structure
-   ↓
-Updates files step-by-step
-   ↓
-Streams changes via SSE
-   ↓
-Sandpack auto-refreshes preview
-   ↓
-Optimized production-ready app 🚀
-🧩 Architecture Diagram
-🧑‍💻 Workspace System
+- Project-first code generation (not just snippets)
+- Persistent workspace state and chat history
+- Live preview via Sandpack
+- Autonomous improvement agents (Cline SDK)
+- AI-driven debugging and fixes
+- Auth, billing, and credit system integrations
 
-Each workspace contains:
+## Architecture (visual)
 
-Chat messages (AI + user)
-Generated file system
-Dependency graph
-Project metadata
+```mermaid
+flowchart TD
+  A[User Prompt] --> B[Next.js Chat UI]
+  B --> C[/api/gen-ai-code]
+  C --> D[Gemini AI: Code Generation]
+  D --> E[Structured Output: Files + Metadata]
+  E --> F[Supabase: Workspace Storage]
+  E --> G[Sandpack: Live Preview]
+  F --> G
+  G --> H[User Sees Running App]
+  H --> I[User Requests "Improve with AI"]
+  I --> J[Cline Agent]
+  J --> E
+  style D fill:#f9f,stroke:#333,stroke-width:1px
+  style J fill:#ff9,stroke:#333,stroke-width:1px
+```
 
-Everything is persisted in Supabase.
+## Quickstart
 
-🔐 Authentication & Billing
-Google OAuth via Clerk
-Automatic user sync to Supabase
-Plan-based access control
-Credit deduction per AI operation
-Secure server + client validation
-🗃️ Database Schema
-User
-id
-clerkId
-name
-email
-imageUrl
-credits
-plan
-createdAt
-updatedAt
-Workspace
-id
-userId
-title
-messages (JSON)
-fileData (JSON)
-createdAt
-updatedAt
-⚙️ Getting Started
-1. Clone repo
-git clone https://github.com/your-repo/agentic-ai-app-builder
-cd agentic-ai-app-builder
+1. Install dependencies
+
+```bash
 npm install
-2. Setup database
+```
+
+2. Generate Prisma client and push schema
+
+```bash
 npx prisma generate
 npx prisma db push
-3. Run development server
+```
+
+3. Run the development server
+
+```bash
 npm run dev
-🔐 Environment Variables
-# Clerk
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
-CLERK_SECRET_KEY=
+```
 
-# Supabase
-NEXT_PUBLIC_SUPABASE_URL=
-NEXT_PUBLIC_SUPABASE_ANON_KEY=
-DATABASE_URL=
+4. Open http://localhost:3000
 
-# Gemini AI
-GEMINI_API_KEY=
+## Environment variables
 
-# Arcjet
-ARCJET_KEY=
-🚀 What makes this project impressive
-Real agentic AI system (not just prompt-response)
-Full-stack SaaS architecture
-Live execution sandbox (rare in AI tools)
-Persistent AI memory per workspace
-Multi-layer AI pipeline (generate → run → fix → improve)
-Production-ready billing + auth system
-🔮 Future Enhancements
-Multi-agent collaboration system
-GitHub repo export
-One-click deployment to Vercel
-Plugin ecosystem for tools
-Real-time multiplayer AI coding
-⭐ Show Your Support
+Create a `.env.local` file at the project root and provide the following values:
 
-If this project helped you learn AI systems or full-stack architecture:
+- `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`
+- `CLERK_SECRET_KEY`
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+- `DATABASE_URL`
+- `GEMINI_API_KEY`
+- `ARCJET_KEY`
 
-⭐ Star the repo
-🚀 Share with developers
-🔥 Build something insane with it
+## Project layout
 
-🧠 Final Thought
+- `app/` — Next.js App Router pages and API routes
+- `components/` — React UI components
+- `lib/` — helper utilities and server code
+- `prisma/` — Prisma schema and migrations
+- `public/` — static assets
+- `types/` — TypeScript types
 
-This isn’t just an AI code generator.
+## Development notes
 
-It’s a self-improving software creation system powered by agents.
+- The AI generation endpoint lives at `app/api/gen-ai-code/route.ts`.
+- Workspaces, messages, and generated file data are persisted via Supabase (see `lib/prisma.ts` and `lib/server.ts`).
+
+If you change database schemas, run `npx prisma migrate` or `npx prisma db push`.
+
+## Contributing
+
+Contributions are welcome. For major changes, open an issue first to discuss the design.
+
+1. Fork the repo
+2. Create a branch: `git checkout -b feat/your-feature`
+3. Install and run locally
+4. Send a PR
+
+## License
+
+This project is provided as-is. Add your preferred license.
+
+---
+
+If you'd like, I can also generate a one-page architecture PNG or improve any specific section (setup, deployment, or contributor guide). Would you like that?
