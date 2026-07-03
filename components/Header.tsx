@@ -17,11 +17,11 @@ export default async function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 select-none">
           <Image
-            src="/logo.png"
-            alt="Forge"
-            width={100}
+            src="/logo3.png"
+            alt="Aether AI "
+            width={400}
             height={100}
-            className="h-9 w-auto rounded-md"
+            className="h-14 w-auto "
           />
         </Link>
 

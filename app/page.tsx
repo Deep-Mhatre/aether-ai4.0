@@ -305,7 +305,7 @@ export default function LandingPage() {
 
         <div className="mx-auto max-w-3xl">
           {STEPS.map((step, i) => (
-            <div key={step.number} className="flex gap-6">
+            <div key={"STEP_" + step.number} className="flex gap-6">
               <div className="flex flex-col items-center">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/4">
                   <span className="font-mono text-xs font-semibold text-white/50">
@@ -314,7 +314,7 @@ export default function LandingPage() {
                 </div>
 
                 {i < STEPS.length - 1 && (
-                  <div className="mt-2 h-full w-px bg-white/6" />
+                  <div className="mt-2 h-full w-px bg-gradient-to-b from-white/20 to-transparent" />
                 )}
               </div>
 
@@ -556,7 +556,7 @@ export default function LandingPage() {
       </section>
 
       <footer className="relative z-10 border-t border-white/7 py-12 mx-auto px-6 flex flex-wrap items-center justify-center text-stone-400">
-        Made with ❤️ by RoadsideCoder
+        Aether AI © 2026 · Built for developers
       </footer>
     </main>
   );
