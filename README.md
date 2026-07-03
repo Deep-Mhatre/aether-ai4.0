@@ -31,16 +31,16 @@ This repository contains a Next.js app that demonstrates an agent-driven pipelin
 
 ```mermaid
 flowchart TD
-  A[User Prompt] --> B[Next.js Chat UI]
-  B --> C[/api/gen-ai-code]
-  C --> D[Gemini AI: Code Generation]
-  D --> E[Structured Output: Files + Metadata]
-  E --> F[Supabase: Workspace Storage]
-  E --> G[Sandpack: Live Preview]
+  A["User Prompt"] --> B["Next.js Chat UI"]
+  B --> C["/api/gen-ai-code"]
+  C --> D["Gemini AI: Code Generation"]
+  D --> E["Structured Output: Files + Metadata"]
+  E --> F["Supabase: Workspace Storage"]
+  E --> G["Sandpack: Live Preview"]
   F --> G
-  G --> H[User Sees Running App]
-  H --> I[User Requests "Improve with AI"]
-  I --> J[Cline Agent]
+  G --> H["User Sees Running App"]
+  H --> I["User Requests: Improve with AI"]
+  I --> J["Cline Agent"]
   J --> E
   style D fill:#f9f,stroke:#333,stroke-width:1px
   style J fill:#ff9,stroke:#333,stroke-width:1px
